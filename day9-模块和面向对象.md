@@ -1247,7 +1247,7 @@ workbook_obj.save("./files/db/user_info.xlsx")
 
 ![Clip_2024-04-15_21-25-09](./assets/Clip_2024-04-15_21-25-09.png)
 
-#### 2.3.1.4 补充-
+#### 2.3.1.4 补充
 
 - 写入公式
 
@@ -1283,9 +1283,75 @@ workbook_obj.save("./files/equal_excel.xlsx")
 - 删除
 
 ```python
+from openpyxl.workbook import Workbook
+
+workbook_obj = Workbook()
+
+sheet_0 = workbook_obj.worksheets[0]
+
+# 数量
+sheet_0["A1"] = 10
+sheet_0["A2"] = 20
+sheet_0["A3"] = 8
+
+# 单价
+sheet_0["B1"] = 3
+sheet_0["B2"] = 8
+sheet_0["B3"] = 9
+
+# 写入公式
+sheet_0["C1"] = "=A1*B1"
+sheet_0["C2"] = "=A2*B2"
+sheet_0["C3"] = "=A3*B3"
+
+sheet_0["D1"] = "=sum(A1,B1)"
+sheet_0["D2"] = "=sum(A2,B2)"
+sheet_0["D3"] = "=sum(A3,B3)"
+
+sheet_0.delete_rows(idx=2, amount=1)  # 从第二行开始删除 删除的行数为1 amount默认值为1
+sheet_0.delete_columns(idx=3, amount=1)  # 从第三列开始删除 删除的列数为1 amount默认值为1
+
+workbook_obj.save("./files/equal_excel.xlsx")
 ```
 
+- 插入
 
+```python
+from openpyxl.workbook import Workbook
+
+workbook_obj = Workbook()
+
+sheet_0 = workbook_obj.worksheets[0]
+
+# 数量
+sheet_0["A1"] = 10
+sheet_0["A2"] = 20
+sheet_0["A3"] = 8
+
+# 单价
+sheet_0["B1"] = 3
+sheet_0["B2"] = 8
+sheet_0["B3"] = 9
+
+# 写入公式
+sheet_0["C1"] = "=A1*B1"
+sheet_0["C2"] = "=A2*B2"
+sheet_0["C3"] = "=A3*B3"
+
+sheet_0["D1"] = "=sum(A1,B1)"
+sheet_0["D2"] = "=sum(A2,B2)"
+sheet_0["D3"] = "=sum(A3,B3)"
+
+# sheet_0.delete_rows(idx=2, amount=1)  # 从第二行开始删除 删除的行数为1
+# sheet_0.delete_columns(idx=3, amount=1)  # 从第三列开始删除 删除的列数为1
+
+sheet_0.insert_rows(idx=1, amount=3)  # 从第二行开始删除 删除的行数为1
+sheet_0.insert_cols(idx=1, amount=2)  # 从第三列开始删除 删除的列数为1
+
+workbook_obj.save("./files/equal_excel.xlsx")
+```
+
+![Clip_2024-04-15_22-20-00](./assets/Clip_2024-04-15_22-20-00.png)
 
 
 
