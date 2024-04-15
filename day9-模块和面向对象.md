@@ -1353,6 +1353,10 @@ workbook_obj.save("./files/equal_excel.xlsx")
 
 ![Clip_2024-04-15_22-20-00](./assets/Clip_2024-04-15_22-20-00.png)
 
+```python
+#TODO: day09-2 3:00:47
+```
+
 
 
 
